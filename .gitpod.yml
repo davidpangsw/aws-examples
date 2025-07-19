@@ -3,6 +3,9 @@ tasks:
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
+      git config --global credential.helper store && \
+      git remote set-url origin https://davidpangsw:$GITHUB_TOKEN@github.com/davidpangsw/aws-examples.git
+
       cd /workspace
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
