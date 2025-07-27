@@ -1,42 +1,17 @@
-# AWS S3 CLI common operations
+# Main
+
+## AWS S3 CLI common operations
+### S3 Commands
 ```bash
+# This script demonstrates basic AWS S3 CLI operations.
+
+# Basic s3 commands, cli auto prompt
 aws s3
 aws s3 help
 aws s3 ls 
 export AWS_CLI_AUTO_PROMPT=on-partial  # Enable auto prompt
 env | grep AWS
 
-# remove bucket (remove content before that)
-aws s3 rb s3://davidpangsw-s3-example-bucket # fail if non-empty
-aws s3 rm s3://davidpangsw-s3-example-bucket/ --recursive
-aws s3 rb s3://davidpangsw-s3-example-bucket
-
-# create and list buckets
-aws s3api create-bucket --bucket davidpangsw-s3-example --region us-east-1
-aws s3api list-buckets
-
-# Query with JMESPath
-aws s3api list-buckets --query Buckets
-aws s3api list-buckets --query Buckets[].Name
-aws s3api list-buckets --query Buckets[].Name --output text
-aws s3api list-buckets --query Buckets[].Name --output table #json/text/table/yaml/yaml-stream
-aws s3api list-buckets --query "Buckets[?Name=='davidpangsw-s3-example'].Name"
-aws s3api list-buckets --query "Buckets[?Name=='davidpangsw-s3-example'].Name"
-
-# Put / List / Get objects
-# ListObjectsV2 uses ContinuationToken for pagination, which is a more robust and efficient method for retrieving large object lists compared to the Marker parameter used in ListObjects. ContinuationToken ensures consistent and reliable pagination, especially in scenarios with concurrent object modifications.
-aws s3api put-object --bucket davidpangsw-s3-example --key images/hello.txt --content-type plain/txt --body hello.txt
-aws s3api list-objects-v2 --bucket davidpangsw-s3-example --query Contents[].Key
-aws s3api get-object --bucket davidpangsw-s3-example --key images/hello.txt hello.txt
-
-## Note: s3api is low-level, and doesn't provide options to upload whole folder?
-aws s3 sync images/ s3://davidpangsw-aws-example/images/
-```
-
-
-## Examples from AI
-```bash
-# This script demonstrates basic AWS S3 CLI operations.
 
 # Bucket Operations
 aws s3 mb s3://my-bucket-name --region us-east-1  # Make a bucket
@@ -47,7 +22,7 @@ aws s3 rb s3://my-bucket-name --force             # Remove bucket and contents
 
 # Object Operations
 aws s3 cp local-file.txt s3://my-bucket-name/     # Upload a file
-aws s3 cp local-dir/ s3://my-bucket-name/ --recursive # Upload a directory
+aws s3 cp local-dir/ s3://my-bucket-name/ --recursive # Upload all the files in a directory
 aws s3 cp s3://my-bucket-name/file.txt local-file.txt # Download a file
 aws s3 cp s3://my-bucket-name/ local-dir/ --recursive # Download a directory
 aws s3 sync local-dir/ s3://my-bucket-name/       # Sync local directory to bucket
@@ -60,6 +35,8 @@ aws s3 rm s3://my-bucket-name/file.txt            # Remove a file
 aws s3 presign s3://my-bucket-name/file.txt --expires-in 3600 # Generate presigned URL for private file
 ```
 
+
+### S3API
 ```bash
 #!/bin/bash
 
