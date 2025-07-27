@@ -1,0 +1,6 @@
+# Lecture
+## Bash-script
+```bash
+
+
+```
