@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# aws s3 ls
+aws s3api list-buckets | jq -r '.Buckets | sort_by(.CreationDate) | reverse | .[0:1] | .[] | .Name'
+# aws s3api list-buckets --query 'Buckets | sort_by(@, &CreationDate) | reverse(@) | [0:1][*].Name'

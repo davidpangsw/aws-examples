@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "There needs to be a bucket name. e.g. my-bucket-name"
+    exit 1
+fi
+
+bucket=$1
+# aws s3 ls s3://$bucket/
+aws s3api list-objects-v2 --bucket $bucket | jq -r '.Contents[] | .Key'
+# aws s3api list-objects-v2 --query "Contents[].Key" --bucket $bucket

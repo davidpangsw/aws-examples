@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "There needs to be a bucket name. e.g. my-bucket-name"
+    exit 1
+fi
+
+bucket=$1
+region='us-east-1'
+# aws s3 mb s3://$bucket --region $region
+aws s3api create-bucket \
+--region $region \
+# --query Location \
+# --output text \
+--bucket $bucket

@@ -1,9 +1,3 @@
-# Lecture
-## Bash-script
-- (See `bash-scripts/` folder)
-
-## Utility Scripts
-```bash
 #!/bin/bash
 
 # Exit immediately if any command fails (non-zero exit status)
@@ -30,4 +24,3 @@ done
 
 # Display the directory structure
 tree "$output_dir"
-```

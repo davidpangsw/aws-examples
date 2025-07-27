@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "There needs to be a bucket name. e.g. my-bucket-name"
+    exit 1
+fi
+if [ -z "$2" ]; then
+    echo "There needs to be a file name. e.g. my-file-name"
+    exit 1
+fi
+bucket=$1
+filename=$2
+key=$(basename "$filename")
+
+
+aws s3api put-object \
+--bucket "$bucket" \
+--key "$key" \
+--body "$filename"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    echo "There needs to be a bucket name. e.g. my-bucket-name"
+    exit 1
+fi
+bucket=$1
+
+dir='/tmp/aws-examples'
+aws s3 sync $dir s3://$bucket/files

@@ -1,4 +1,15 @@
 tasks:
+  - name: utils
+    # 'before' runs before 'init' and 'command', ideal for early setup like modifying environment variables.
+    # 'init' runs once when the workspace is created, perfect for one-time setup like installing packages.
+    # 'command' runs every time the workspace starts, used to finalize setup like sourcing environment variables.
+    before: |
+      echo 'export PATH=$PATH:/workspace/aws-examples/bin' >> ~/.bashrc
+    init: |
+      sudo apt-get install -y tree
+    command: |
+      source ~/.bashrc
+
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
