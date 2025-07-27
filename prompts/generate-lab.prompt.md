@@ -4,7 +4,7 @@ When asked to generate a lab for `<lecture>` (usually a number, but not always):
 
 ## Process
 
-1. **Read and understand**: Read `lectures/<lecture>/lecture.md` and understand what has been learnt.
+1. **Read and understand**: Read `lectures/<lecture>/main.md` and understand what has been learnt.
 
 2. **Apply rules**: Follow the guidelines in `prompts/common/rule.md` for structure and organization.
 
@@ -15,6 +15,6 @@ When asked to generate a lab for `<lecture>` (usually a number, but not always):
 ## Key Requirements
 
 - Cover every command and operation from the source lecture
-- Create hands-on practice tasks, not just theoretical questions
+- Create hands-on practice tasks as well as meaningful practical questions
 - Follow the structural and ordering rules from `rule.md`
 - Apply any lecture-specific guidelines if they exist

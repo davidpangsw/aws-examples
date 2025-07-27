@@ -12,7 +12,7 @@ aws s3 rm s3://davidpangsw-s3-example-bucket/ --recursive
 aws s3 rb s3://davidpangsw-s3-example-bucket
 
 # create and list buckets
-# If you don't specify region, AWS CLI uses your default region from the AWS configuration (`~/.aws/config` or environment variable `AWS_DEFAULT_REGION`).
+# Make sure you know it: If you don't specify region, AWS CLI uses your default region from the AWS configuration (`~/.aws/config` or environment variable `AWS_DEFAULT_REGION`).
 aws s3api create-bucket --bucket davidpangsw-s3-example --region us-east-1
 aws s3api list-buckets
 
